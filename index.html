@@ -2,53 +2,10 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motiva Click</title>
-    <style>
-        /* Estilos básicos para centralizar o conteúdo na tela */
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 60px;
-            background-color: #f0f0f0;
-            transition: background-color 0.5s, color 0.5s; /* Faz a transição de cores ser suave */
-        }
-        /* Estilo do botão principal */
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        /* Estilo da frase motivacional comum (Sorteada) */
-        #frase {
-            font-size: 24px;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #333;
-            padding: 0 20px;
-            line-height: 1.4;
-        }
-        /* Estilo do título do nível de recompensa */
-        #recompensa {
-            font-size: 22px;
-            color: #0056b3; 
-            margin-top: 30px;
-            font-weight: bold;
-        }
-        /* Estilo da frase marcante e reflexiva do nível */
-        #frase-nivel {
-            font-size: 18px;
-            color: #555;
-            font-style: italic;
-            margin-top: 10px;
-            padding: 0 40px;
-            line-height: 1.5;
-        }
-    </style>
+    <!-- Vincula o arquivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -58,7 +15,7 @@
     <h2>Cliques: <span id="contador">0</span></h2>
 
     <!-- Botão que ativa a função de clique -->
-    <button onclick="computarClique()">CLIQUE AQUI</button>
+    <button id="btn-principal" onclick="computarClique()">CLIQUE AQUI</button>
 
     <!-- Espaço onde a frase comum vai aparecer -->
     <p id="frase">Clique no botão para ver uma frase!</p>
@@ -67,103 +24,7 @@
     <p id="recompensa"></p>
     <p id="frase-nivel"></p>
 
-    <script>
-        // 1. Variável para guardar o total de cliques
-        let totalCliques = 0;
-
-        // 2. Lista (Array) com as frases de poder e atitude
-        let frases = [
-            "Você não veio ao mundo para ser coadjuvante. O show é seu.",
-            "Enquanto eles duvidam, você constrói o império. Deixe que falem.",
-            "Eles tentaram te enterrar, mas esqueceram que você é uma semente de gigante.",
-            "O medo olha para você e muda de calçada.",
-            "Você é a tempestade que os outros tentam prever. Avance.",
-            "Ninguém consegue parar alguém que descobriu a própria força. E você descobriu.",
-            "Você é o pesadelo dos seus problemas e o dono do seu destino.",
-            "Olhe no espelho: essa é a única pessoa que tem o poder de te parar. Ou seja, ninguém.",
-            "Suas maiores vitórias são aquelas que você conquistou quando todos achavam que era o fim.",
-            "A sua mente é uma máquina de vencer. Ligue o motor e não olhe para trás.",
-            "Eles querem o seu topo, mas não aguentariam carregar o peso do seu escudo.",
-            "Você não tem sorte, você tem competência e uma força que assusta os fracos.",
-            "Você nasceu para quebrar recordes, não para seguir regras comuns.",
-            "Se o caminho está difícil, é porque você subiu de nível. Mostre quem manda.",
-            "Você é o tipo de pessoa que faz o mundo parar para ver você passar."
-        ];
-
-        // 3. Função que roda toda vez que o botão é clicado
-        function computarClique() {
-            // Aumenta o contador em +1
-            totalCliques = totalCliques + 1;
-
-            // Atualiza o texto do contador na tela
-            document.getElementById("contador").innerText = totalCliques;
-
-            // Sorteia um número de 0 até o tamanho da lista de frases
-            let numeroSorteado = Math.floor(Math.random() * frases.length);
-
-            // Pega a frase sorteada e coloca na tela
-            document.getElementById("frase").innerText = frases[numeroSorteado];
-
-            // --- SISTEMA DE RECOMPENSA COM FRASES MARCANTES ---
-            
-            // Nível 1: 10 cliques (Modo Bronze)
-            if (totalCliques === 10) {
-                document.getElementById("recompensa").innerText = "🥉 INCRÍVEL! Você atingiu 10 cliques e liberou o Modo Bronze!";
-                document.getElementById("recompensa").style.color = "#cd7f32"; 
-                document.body.style.backgroundColor = "#faebd7"; 
-                
-                // Frase marcante do nível 1
-                document.getElementById("frase-nivel").innerText = "Você está avançando cada vez mais. Imagine que seus cliques são o caminho exato que você está pavimentando para o seu futuro.";
-                document.getElementById("frase-nivel").style.color = "#8b4513";
-            }
-            
-            // Nível 2: 50 cliques (Modo Prata)
-            if (totalCliques === 50) {
-                document.getElementById("recompensa").innerText = "🥈 SENSACIONAL! Você atingiu 50 cliques e liberou o Modo Prata!";
-                document.getElementById("recompensa").style.color = "#708090"; 
-                document.body.style.backgroundColor = "#e6e6fa"; 
-                
-                // Frase marcante do nível 2
-                document.getElementById("frase-nivel").innerText = "Olhe para trás e veja a distância que você já percorreu. A consistência silenciosa constrói os maiores impérios.";
-                document.getElementById("frase-nivel").style.color = "#4a4a4a";
-            }
-
-            // Nível 3: 100 cliques (Modo Ouro)
-            if (totalCliques === 100) {
-                document.getElementById("recompensa").innerText = "🥇 MITO! Você atingiu 100 cliques e liberou o Modo Ouro!";
-                document.getElementById("recompensa").style.color = "#d4af37"; 
-                document.body.style.backgroundColor = "#fff8e7"; 
-                
-                // Frase marcante do nível 3
-                document.getElementById("frase-nivel").innerText = "A maioria das pessoas desiste antes dos cem passos. Ao insistir, você acabou de provar que a sua mente não aceita a média.";
-                document.getElementById("frase-nivel").style.color = "#8b6508";
-            }
-
-            // Nível 4: 500 cliques (Modo Diamante)
-            if (totalCliques === 500) {
-                document.getElementById("recompensa").innerText = "💎 INSANO! Você atingiu 500 cliques e liberou o Modo Diamante!";
-                document.getElementById("recompensa").style.color = "#00bfff"; 
-                document.body.style.backgroundColor = "#e0ffff"; 
-                
-                // Frase marcante do nível 4
-                document.getElementById("frase-nivel").innerText = "Assim como o diamante, você está sendo moldado sob extrema pressão. O que antes parecia um esforço absurdo, agora se tornou o seu ritmo natural.";
-                document.getElementById("frase-nivel").style.color = "#008b8b";
-            }
-
-            // Nível 5: 1.000 cliques (Modo Hacker / Modo Escuro)
-            if (totalCliques === 1000) {
-                document.getElementById("recompensa").innerText = "🌌 LENDÁRIO! Você alcançou 1.000 cliques e desbloqueou o Modo Infinito!";
-                document.getElementById("recompensa").style.color = "#39ff14"; // Verde neon
-                document.body.style.backgroundColor = "#0f172a"; // Fundo escuro
-                document.body.style.color = "#ffffff"; // Letras brancas
-                document.getElementById("frase").style.color = "#e2e8f0";
-                
-                // Frase marcante do nível 5
-                document.getElementById("frase-nivel").innerText = "Você rompeu a barreira do comum. Mil ações repetidas com foco criam maestria. Você não está apenas jogando, você está pronto para dominar qualquer área da sua vida.";
-                document.getElementById("frase-nivel").style.color = "#a7f3d0";
-            }
-        }
-    </script>
-
+    <!-- Vincula o arquivo de comportamento JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
