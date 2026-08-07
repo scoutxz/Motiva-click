@@ -1,0 +1,104 @@
+/* Estilos básicos para centralizar o conteúdo na tela */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 60px;
+    background-color: #f0f0f0;
+    transition: background-color 0.8s, color 0.8s; /* Suaviza a transição de cores */
+    overflow-x: hidden; /* Evita barras de rolagem em animações de tremor */
+}
+
+/* Estilo do botão principal */
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: transform 0.1s, background-color 0.3s;
+}
+
+button:active {
+    transform: scale(0.95); /* Efeito físico de clique */
+}
+
+/* Estilo da frase motivacional comum (Sorteada) */
+#frase {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+    padding: 0 20px;
+    line-height: 1.4;
+    transition: color 0.5s;
+}
+
+/* Estilo do título do nível de recompensa */
+#recompensa {
+    font-size: 24px;
+    color: #0056b3; 
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* Estilo da frase marcante e reflexiva do nível */
+#frase-nivel {
+    font-size: 18px;
+    color: #555;
+    font-style: italic;
+    margin-top: 10px;
+    padding: 0 40px;
+    line-height: 1.5;
+    transition: color 0.5s;
+}
+
+/* --- ANIMAÇÕES DE EFEITOS DOS NÍVEIS --- */
+
+/* Nível 1: Tremor de impacto na tela */
+.efeito-tremor {
+    animation: tremor 0.4s ease-in-out;
+}
+@keyframes tremor {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+/* Nível 2: Efeito de surgimento elegante (Fade In) */
+.efeito-fade {
+    animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nível 3: Pulso de luz dourada */
+.efeito-pulso-ouro {
+    animation: pulsoOuro 1.5s infinite alternate;
+}
+@keyframes pulsoOuro {
+    from { box-shadow: 0 0 10px #d4af37; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
+    to { box-shadow: 0 0 25px #d4af37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.9); }
+}
+
+/* Nível 4: Brilho de Diamante Congelante */
+.efeito-diamante {
+    animation: brilhoDiamante 2s infinite alternate;
+}
+@keyframes brilhoDiamante {
+    0% { text-shadow: 0 0 4px #fff, 0 0 10px #00bfff; }
+    100% { text-shadow: 0 0 8px #fff, 0 0 20px #00ffff, 0 0 30px #00bfff; }
+}
+
+/* Nível 5: Piscar Matrix / Neon Hacker */
+.efeito-hacker {
+    animation: neonHacker 1s infinite alternate;
+}
+@keyframes neonHacker {
+    0% { text-shadow: 0 0 2px #39ff14, 0 0 5px #39ff14; }
+    100% { text-shadow: 0 0 8px #39ff14, 0 0 15px #39ff14, 0 0 25px #39ff14; }
+}
