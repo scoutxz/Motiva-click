@@ -25,8 +25,6 @@ function computarClique() {
     // Aumenta o contador em +1
     totalCliques = totalCliques + 1;
 
-    // Atualiza o texto do contador na tela
-    document.getElementById("contador").innerText = totalCliques;
 
     // Sorteia um número de 0 até o tamanho da lista de frases
     let numeroSorteado = Math.floor(Math.random() * frases.length);
