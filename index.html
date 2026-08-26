@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motiva Click</title>
-    <!-- Vincula o arquivo de estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motiva Click</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>Motiva Click</h1>
-    
-    <!-- Mostra o contador de cliques na tela -->
-    <h2>Cliques: <span id="contador">0</span></h2>
+<nav>
+    <div class="logo">Motiva <span>Click</span></div>
+    <div>
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+    </div>
+</nav>
 
-    <!-- Botão que ativa a função de clique -->
-    <button id="btn-principal" onclick="computarClique()">CLIQUE AQUI</button>
+<div class="container">
+    <h1>Precisa de uma <span>Frase Motivadora?</span></h1>
+    <p>Clique no botão abaixo e receba motivação!</p>
 
-    <!-- Espaço onde a frase comum vai aparecer -->
-    <p id="frase">Clique no botão para ver uma frase!</p>
+    <button onclick="motivar()">Me Motiva!</button>
 
+    <div class="card" id="mensagem">
+        Clique no botão para receber uma frase motivacional
+    </div>
+</div>
 
-    <!-- Vincula o arquivo de comportamento JavaScript -->
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
