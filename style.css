@@ -40,7 +40,7 @@ h1 span {
 }
 
 p {
-    color: #ccc;
+    color: #fafafa;
     font-size: 18px;
 }
 
@@ -69,4 +69,19 @@ button:hover {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
     font-size: 22px;
+}
+
+/* 🐉 Banguela */
+#dragao {
+    position: fixed;
+    width: 115px;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s linear;
+    z-index: 999;
+}body {
+  background-image: url("https://media1.tenor.com/m/FBmEteiV_QkAAAAC/blue.gif");
+  background-size: cover;
 }

@@ -12,22 +12,36 @@
 
 <nav>
     <div class="logo">Motiva <span>Click</span></div>
-    <div>
-        <a href="#">Início</a>
-        <a href="#">Sobre</a>
-    </div>
 </nav>
 
 <div class="container">
+
     <h1>Precisa de uma <span>Frase Motivadora?</span></h1>
     <p>Clique no botão abaixo e receba motivação!</p>
+
+    <!-- CONTROLES (PAINEL DIREITO) -->
+    <div class="controls">
+
+        <label>🐉 Dragão:</label>
+        <select id="selectDragao" onchange="trocarDragaoManual()"></select>
+
+        <label>
+            <input type="checkbox" id="autoTroca" checked>
+            Auto
+        </label>
+
+    </div>
 
     <button onclick="motivar()">Me Motiva!</button>
 
     <div class="card" id="mensagem">
         Clique no botão para receber uma frase motivacional
     </div>
+
 </div>
+
+<!-- DRAGÃO -->
+<img id="dragao" src="https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif" alt="dragao">
 
 <script src="script.js"></script>
 </body>

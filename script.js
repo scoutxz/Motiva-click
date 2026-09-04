@@ -1,4 +1,4 @@
-// LISTAS DE PALAVRAS (cada parte da frase)
+// FRASES
 const inicios = [
     "Você pode",
     "Nunca esqueça:",
@@ -7,7 +7,6 @@ const inicios = [
     "Continue, você está perto de",
     "Seu esforço vai"
 ];
-// ↑ começo das frases
 
 const meios = [
     "conquistar seus objetivos",
@@ -17,7 +16,6 @@ const meios = [
     "evoluir mais um pouco",
     "mudar sua história"
 ];
-// ↑ parte do meio da frase
 
 const finais = [
     "não desista agora.",
@@ -27,30 +25,76 @@ const finais = [
     "continue tentando.",
     "vai valer a pena."
 ];
-// ↑ final da frase
 
-// FUNÇÃO QUE MONTA UMA FRASE ALEATÓRIA
+// 🐉 DRAGÕES
+const dragoes = [
+    "https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif",
+    "https://media.tenor.com/ip2ijY0tIfsAAAAi/dance-dragon.gif",
+    "https://media.tenor.com/O5BuhhRREWEAAAAi/dragon-wow.gif",
+    "https://media.tenor.com/XU_t4XSavoIAAAAi/dragon-happy.gif"
+];
+
+// FRASE
 function gerarFrase() {
-
-    // pega um item aleatório do início
-    const inicio = inicios[Math.floor(Math.random() * inicios.length)];
-
-    // pega um item aleatório do meio
-    const meio = meios[Math.floor(Math.random() * meios.length)];
-
-    // pega um item aleatório do final
-    const final = finais[Math.floor(Math.random() * finais.length)];
-
-    // junta tudo em uma frase só
-    return inicio + " " + meio + ", " + final;
+    return `${inicios[Math.floor(Math.random() * inicios.length)]} 
+    ${meios[Math.floor(Math.random() * meios.length)]}, 
+    ${finais[Math.floor(Math.random() * finais.length)]}`;
 }
 
-// FUNÇÃO DO BOTÃO
-function motivar() {
+document.addEventListener("DOMContentLoaded", () => {
 
-    // pega o elemento da tela com id "mensagem"
-    const elemento = document.getElementById("mensagem");
+    const dragao = document.getElementById("dragao");
+    const mensagem = document.getElementById("mensagem");
+    const select = document.getElementById("selectDragao");
+    const auto = document.getElementById("autoTroca");
 
-    // troca o texto pelo resultado da função gerarFrase()
-    elemento.innerText = gerarFrase();
-}
+    let x = 0, y = 0;
+    let usados = [];
+
+    // preencher select
+    dragoes.forEach((d, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = "Dragão " + (i + 1);
+        select.appendChild(option);
+    });
+
+    // segue mouse
+    document.addEventListener("mousemove", (e) => {
+        x += (e.clientX - x) * 0.1;
+        y += (e.clientY - y) * 0.1;
+
+        dragao.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // botão motivar
+    window.motivar = function () {
+
+        mensagem.innerText = gerarFrase();
+
+        if (auto.checked) {
+
+            if (usados.length === dragoes.length) {
+                usados = [];
+            }
+
+            let novo;
+
+            do {
+                novo = dragoes[Math.floor(Math.random() * dragoes.length)];
+            } while (usados.includes(novo));
+
+            usados.push(novo);
+
+            dragao.src = novo;
+
+            select.value = dragoes.indexOf(novo);
+        }
+    };
+
+    // troca manual
+    window.trocarDragaoManual = function () {
+        dragao.src = dragoes[select.value];
+    };
+
+});
