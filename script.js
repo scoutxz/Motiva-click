@@ -29,7 +29,7 @@ const finais = [
 // 🐉 DRAGÕES
 const dragoes = [
     "https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif",
-    "https://media.tenor.com/ip2ijY0tIfsAAAAi/dance-dragon.gif",
+    "https://cdn.pixabay.com/animation/2025/11/03/15/27/15-27-00-330_512.gif",
     "https://media.tenor.com/O5BuhhRREWEAAAAi/dragon-wow.gif",
     "https://media.tenor.com/XU_t4XSavoIAAAAi/dragon-happy.gif"
 ];
