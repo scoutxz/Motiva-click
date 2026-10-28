@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motiva Click</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b95735">
+  <title>Motiva Click</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body data-periodo="dia" data-estacao="primavera">
+  <div id="gifFundo" aria-hidden="true"></div>
+  <div class="ambient-overlay" aria-hidden="true"></div>
 
-<body>
+  <nav>
+    <div class="logo">M<span id="easterEggO" title="👀">o</span>tiva <span>Click</span></div>
+    <div class="contexto" id="contexto" aria-live="polite">Preparando sua inspiração...</div>
+  </nav>
 
-<nav>
-    <div class="logo">Motiva <span>Click</span></div>
-</nav>
-
-<div class="container">
-
+  <main class="container">
+    <p class="eyebrow" id="saudacao">UM NOVO DIA, UMA NOVA CHANCE</p>
     <h1>Precisa de uma <span>Frase Motivadora?</span></h1>
-    <p>Clique no botão abaixo e receba motivação!</p>
+    <p class="subtitulo">Respire fundo, encontre seu ritmo e continue em frente.</p>
 
-    <!-- CONTROLES (PAINEL DIREITO) -->
-    <div class="controls">
+    <section class="controls" aria-label="Personalização do dragão">
+      <label for="selectDragao">🐾 Escolha seu animal</label>
+      <select id="selectDragao"></select>
+      <label class="auto-label" for="autoTroca">
+        <input type="checkbox" id="autoTroca" checked>
+        Trocar automaticamente
+      </label>
+    </section>
 
-        <label>🐉 Dragão:</label>
-        <select id="selectDragao" onchange="trocarDragaoManual()"></select>
+    <section id="painelEstacoes" class="painel-estacoes" hidden aria-label="Trocar estação do ano">
+      <p>🌈 Você encontrou o easter egg! Escolha uma estação:</p>
+      <label for="selectEstacao">Estação do ano</label>
+      <select id="selectEstacao">
+        <option value="primavera">🌸 Primavera</option>
+        <option value="verao">☀️ Verão</option>
+        <option value="outono">🍂 Outono</option>
+        <option value="inverno">❄️ Inverno</option>
+      </select>
+      <button id="fecharEstacoes" type="button">Fechar</button>
+    </section>
 
-        <label>
-            <input type="checkbox" id="autoTroca" checked>
-            Auto
-        </label>
+    <button id="botaoMotivar" type="button">Me motiva!</button>
 
+    <div class="card" id="mensagem" aria-live="polite">
+      Clique no botão para receber uma frase motivacional.
     </div>
 
-    <button onclick="motivar()">Me Motiva!</button>
+    <p class="nota-tema" id="notaTema">O cenário muda conforme o horário e a estação do ano.</p>
+  </main>
 
-    <div class="card" id="mensagem">
-        Clique no botão para receber uma frase motivacional
-    </div>
+  <img id="dragao" src="https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif" alt="Animal animado que muda conforme o horário e a estação">
 
-</div>
-
-<!-- DRAGÃO -->
-<img id="dragao" src="https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif" alt="dragao">
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-</html>>
+</html>
