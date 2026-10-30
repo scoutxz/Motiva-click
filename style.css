@@ -497,3 +497,311 @@ body #dragao {
   from { opacity: 0; transform: translateY(8px) scale(0.98); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+
+/* Ajustes automáticos por mês e período do dia */
+body {
+  background:
+    radial-gradient(ellipse at 18% 18%, var(--brilho-mes, rgba(255,205,125,.38)), transparent 38%),
+    linear-gradient(135deg, var(--fundo-1), var(--fundo-2));
+}
+/* Nuance visual própria para cada mês do calendário brasileiro. */
+body[data-mes="01"] { --brilho-mes: rgba(255, 220, 125, .48); }
+body[data-mes="02"] { --brilho-mes: rgba(255, 190, 112, .46); }
+body[data-mes="03"] { --brilho-mes: rgba(245, 174, 116, .42); }
+body[data-mes="04"] { --brilho-mes: rgba(213, 133, 83, .42); }
+body[data-mes="05"] { --brilho-mes: rgba(184, 112, 78, .40); }
+body[data-mes="06"] { --brilho-mes: rgba(174, 190, 211, .34); }
+body[data-mes="07"] { --brilho-mes: rgba(166, 196, 220, .40); }
+body[data-mes="08"] { --brilho-mes: rgba(190, 207, 222, .40); }
+body[data-mes="09"] { --brilho-mes: rgba(214, 190, 164, .40); }
+body[data-mes="10"] { --brilho-mes: rgba(222, 164, 133, .42); }
+body[data-mes="11"] { --brilho-mes: rgba(238, 183, 130, .44); }
+body[data-mes="12"] { --brilho-mes: rgba(255, 213, 126, .50); }
+
+/* Dia: visual claro e confortável. */
+body[data-tema="claro"] {
+  --fundo-1: #b9d9df; --fundo-2: #f4e6c8; --destaque: #527d83;
+  --botao-1: #78aeb0; --botao-2: #568b91; --texto: #29464a;
+  --painel: rgba(255, 255, 255, .62);
+}
+body[data-tema="claro"] .contexto {
+  color: #29464a; background: rgba(255,255,255,.48); border-color: rgba(41,70,74,.2);
+}
+/* Fim de tarde: cores quentes de pôr do sol. */
+body[data-tema="tarde"] {
+  --fundo-1: #a84f3c; --fundo-2: #f0a45f; --destaque: #fff0c2;
+  --botao-1: #f2a05a; --botao-2: #bd503b; --texto: #fff8ef;
+  --painel: rgba(91, 43, 35, .43);
+}
+body[data-tema="tarde"] .ambient-overlay {
+  background: linear-gradient(180deg, rgba(255,196,120,.08), rgba(91,38,34,.18));
+}
+/* Noite: paleta escura azul-arroxeada. */
+body[data-tema="escuro"] {
+  --fundo-1: #17243d; --fundo-2: #49364f; --destaque: #d8c7ff;
+  --botao-1: #8064a8; --botao-2: #51406f; --texto: #f7f2ff;
+  --painel: rgba(18, 22, 42, .68);
+}
+body[data-tema="escuro"] .contexto {
+  color: #f7f2ff; background: rgba(15,20,40,.35); border-color: rgba(247,242,255,.2);
+}
+body[data-tema="escuro"] .subtitulo,
+body[data-tema="escuro"] .nota-tema { color: rgba(247,242,255,.86); }
+body, .card, .controls, .contexto, button {
+  transition: background 1s ease, color .7s ease, border-color .7s ease;
+}
+
+
+/* =========================================================
+   PALETA FINAL: horário define o clima; estação define os detalhes.
+   Dia: laranja | fim de tarde: laranja escuro | noite: P&B.
+   ========================================================= */
+
+/* Identidade cromática de cada estação (hemisfério sul). */
+body[data-estacao="primavera"] {
+  --cor-estacao: #f28a62;
+  --brilho-estacao: rgba(255, 190, 155, .42);
+  --borda-estacao: rgba(242, 138, 98, .38);
+}
+body[data-estacao="verao"] {
+  --cor-estacao: #f5b544;
+  --brilho-estacao: rgba(255, 218, 112, .48);
+  --borda-estacao: rgba(245, 181, 68, .42);
+}
+body[data-estacao="outono"] {
+  --cor-estacao: #b85b35;
+  --brilho-estacao: rgba(196, 111, 64, .40);
+  --borda-estacao: rgba(184, 91, 53, .42);
+}
+body[data-estacao="inverno"] {
+  --cor-estacao: #aebdca;
+  --brilho-estacao: rgba(204, 221, 235, .42);
+  --borda-estacao: rgba(174, 189, 202, .42);
+}
+
+/* DIA — laranja iluminado, com variação sutil por estação. */
+body[data-tema="claro"] {
+  --fundo-1: #f5a044;
+  --fundo-2: #ffd18a;
+  --destaque: var(--cor-estacao);
+  --botao-1: #ffad45;
+  --botao-2: #e66a24;
+  --texto: #492719;
+  --painel: rgba(255, 249, 239, .78);
+  color: var(--texto);
+  background:
+    radial-gradient(ellipse at 15% 12%, var(--brilho-estacao), transparent 38%),
+    linear-gradient(135deg, var(--fundo-1), var(--fundo-2));
+}
+body[data-tema="claro"] .contexto {
+  color: #60351f;
+  background: rgba(255, 250, 241, .62);
+  border-color: var(--borda-estacao);
+}
+body[data-tema="claro"] .subtitulo,
+body[data-tema="claro"] .nota-tema { color: rgba(73, 39, 25, .86); }
+body[data-tema="claro"] .eyebrow,
+body[data-tema="claro"] h1 span,
+body[data-tema="claro"] .logo span { color: #a84b20; }
+body[data-tema="claro"] .controls,
+body[data-tema="claro"] .card,
+body[data-tema="claro"] .painel-estacoes {
+  border-color: var(--borda-estacao);
+  box-shadow: 0 16px 42px rgba(111, 57, 22, .12);
+}
+body[data-tema="claro"] #gifFundo { opacity: .38; }
+
+/* FIM DE TARDE — cobre e laranja queimado. */
+body[data-tema="tarde"] {
+  --fundo-1: #71331f;
+  --fundo-2: #c45d2d;
+  --destaque: #ffd09a;
+  --botao-1: #e88b43;
+  --botao-2: #963c22;
+  --texto: #fff4e8;
+  --painel: rgba(64, 29, 20, .62);
+  color: var(--texto);
+  background:
+    radial-gradient(ellipse at 82% 12%, var(--brilho-estacao), transparent 38%),
+    linear-gradient(135deg, var(--fundo-1), var(--fundo-2));
+}
+body[data-tema="tarde"] .contexto {
+  color: #fff4e8;
+  background: rgba(67, 29, 19, .42);
+  border-color: rgba(255, 208, 154, .32);
+}
+body[data-tema="tarde"] .subtitulo,
+body[data-tema="tarde"] .nota-tema { color: rgba(255, 244, 232, .88); }
+body[data-tema="tarde"] .eyebrow,
+body[data-tema="tarde"] h1 span,
+body[data-tema="tarde"] .logo span { color: #ffd09a; }
+body[data-tema="tarde"] .controls,
+body[data-tema="tarde"] .card,
+body[data-tema="tarde"] .painel-estacoes {
+  border-color: rgba(255, 208, 154, .24);
+}
+body[data-tema="tarde"] #gifFundo { opacity: .42; }
+
+/* NOITE — monocromático, elegante e com contraste confortável. */
+body[data-tema="escuro"] {
+  --fundo-1: #080808;
+  --fundo-2: #252525;
+  --destaque: #ffffff;
+  --botao-1: #555555;
+  --botao-2: #202020;
+  --texto: #f7f7f7;
+  --painel: rgba(20, 20, 20, .78);
+  color: var(--texto);
+  background:
+    radial-gradient(ellipse at 18% 12%, rgba(255,255,255,.10), transparent 38%),
+    linear-gradient(135deg, var(--fundo-1), var(--fundo-2));
+}
+body[data-tema="escuro"] .contexto {
+  color: #f7f7f7;
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+body[data-tema="escuro"] .subtitulo,
+body[data-tema="escuro"] .nota-tema { color: rgba(255,255,255,.78); }
+body[data-tema="escuro"] .eyebrow,
+body[data-tema="escuro"] h1 span,
+body[data-tema="escuro"] .logo span { color: #ffffff; }
+body[data-tema="escuro"] .controls,
+body[data-tema="escuro"] .card,
+body[data-tema="escuro"] .painel-estacoes {
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 18px 48px rgba(0,0,0,.28);
+}
+body[data-tema="escuro"] select {
+  color-scheme: dark;
+  color: #f5f5f5;
+  background: #292929;
+  border-color: #666;
+}
+body[data-tema="escuro"] #gifFundo {
+  opacity: .18;
+  filter: grayscale(1);
+}
+
+/* Componentes acompanham a paleta ativa sem perder legibilidade. */
+body[data-tema] button {
+  color: #fff;
+  transition: background 1s ease, color .7s ease, transform .2s ease, box-shadow .2s ease;
+}
+body[data-tema] .ambient-overlay {
+  transition: background 1s ease;
+}
+body[data-tema] .card,
+body[data-tema] .controls,
+body[data-tema] .painel-estacoes,
+body[data-tema] .contexto {
+  transition: background 1s ease, color .7s ease, border-color .7s ease, box-shadow .7s ease;
+}
+
+
+/* Segundo easter egg: prévia de horários */
+#contexto {
+  cursor: pointer;
+  user-select: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#contexto:hover {
+  box-shadow: 0 0 0 2px var(--destaque), 0 0 18px rgba(255,255,255,.12);
+}
+#contexto:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 4px;
+}
+.painel-horarios button {
+  margin-left: 5px;
+}
+
+
+/* Fechar os painéis secretos sem deixar opções acumuladas na tela. */
+.painel-estacoes {
+  position: relative;
+  padding-top: 54px;
+}
+
+.painel-estacoes .botao-fechar-painel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .18);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.painel-estacoes .botao-fechar-painel:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.12);
+}
+
+.painel-estacoes .botao-fechar-painel:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 3px;
+}
+
+
+/* Efeitos climáticos acionados pelos cliques reais do usuário */
+.efeitos-clima { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 20; }
+.particula { position: absolute; top: -8vh; font-size: clamp(16px, 2.4vw, 30px); opacity: 0; animation: cair-clima 3.4s ease-in forwards; filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+.particula-chuva { font-size: 17px; color: #bdeaff; text-shadow: 0 0 7px #8bd7ff; animation-name: cair-chuva; }
+.particula-sol { top: 10%; animation-name: brilhar-sol; }
+.particula-folhas, .particula-petalas { animation-name: cair-rodopiando; }
+.particula-neve { color: #fff; text-shadow: 0 0 8px #bdeaff; animation-name: cair-neve; }
+.particula-vento { animation-name: vento-particula; }
+@keyframes cair-clima { 0% { opacity: 0; transform: translateY(0); } 15% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--deslocamento), 115vh) rotate(360deg); } }
+@keyframes cair-chuva { 0% { opacity: 0; transform: translateY(0) rotate(15deg); } 10% { opacity: .75; } 100% { opacity: 0; transform: translate(-35px, 115vh) rotate(15deg); } }
+@keyframes cair-neve { 0% { opacity: 0; transform: translateY(0); } 12% { opacity: .95; } 100% { opacity: 0; transform: translate(var(--deslocamento), 115vh) rotate(240deg); } }
+@keyframes cair-rodopiando { 0% { opacity: 0; transform: translateY(0) rotate(0); } 12% { opacity: .95; } 100% { opacity: 0; transform: translate(var(--deslocamento), 115vh) rotate(560deg); } }
+@keyframes brilhar-sol { 0% { opacity: 0; transform: scale(.4) rotate(0); } 25% { opacity: .95; } 100% { opacity: 0; transform: translateY(55vh) scale(1.5) rotate(120deg); } }
+@keyframes vento-particula { 0% { opacity: 0; transform: translateX(-15vw); } 15% { opacity: .8; } 100% { opacity: 0; transform: translate(115vw, 30vh) rotate(180deg); } }
+.music-player { width: min(100%, 620px); margin: 28px auto 24px; padding: 22px; border: 1px solid rgba(255,255,255,.28); border-radius: 22px; background: var(--painel, rgba(255,255,255,.2)); backdrop-filter: blur(14px); box-shadow: 0 16px 42px rgba(0,0,0,.14); text-align: left; }
+.music-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
+.music-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--botao-1); color: white; font-size: 26px; }
+.music-heading h2 { margin: 0 0 4px; font-size: 20px; }
+.music-heading p, .music-help { margin: 0; font-size: 13px; opacity: .82; }
+.music-player label { display: block; margin-bottom: 7px; font-weight: 700; }
+.music-player select { width: 100%; margin-bottom: 12px; }
+.music-buttons { display: flex; gap: 10px; margin-bottom: 14px; }
+.music-buttons button { flex: 1; padding: 10px 14px; font-size: 14px; }
+.music-player iframe { display: block; border: 0; border-radius: 12px; }
+.music-help { margin-top: 10px; line-height: 1.5; }
+.spotify-link { display: inline-block; margin-top: 10px; color: inherit; font-weight: 800; }
+@media (max-width: 600px) { .music-player { padding: 16px; } .music-buttons button { padding: 10px 8px; font-size: 12px; } }
+
+/* Player compacto fixo no canto superior direito */
+.music-player {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  width: 290px;
+  max-width: calc(100vw - 28px);
+  margin: 0;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+}
+.music-heading { gap: 9px; margin-bottom: 9px; }
+.music-icon { width: 32px; height: 32px; border-radius: 10px; font-size: 20px; }
+.music-heading h2 { font-size: 15px; }
+.music-heading p { font-size: 10px; line-height: 1.25; }
+.music-player label { margin-bottom: 5px; font-size: 12px; }
+.music-player select { margin-bottom: 8px; padding: 7px; font-size: 12px; }
+.music-buttons { gap: 6px; margin-bottom: 8px; }
+.music-buttons button { padding: 7px 8px; font-size: 11px; }
+.music-player iframe { height: 80px; }
+.music-help { display: none; }
+.spotify-link { margin-top: 6px; font-size: 11px; }
+@media (max-width: 600px) {
+  .music-player { top: 8px; right: 8px; width: 250px; max-width: calc(100vw - 16px); padding: 10px; }
+  .music-player iframe { height: 80px; }
+}
