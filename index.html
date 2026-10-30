@@ -7,9 +7,10 @@
   <title>Motiva Click</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-periodo="dia" data-estacao="primavera">
+<body data-periodo="manha" data-estacao="primavera" data-tema="claro">
   <div id="gifFundo" aria-hidden="true"></div>
   <div class="ambient-overlay" aria-hidden="true"></div>
+  <div id="efeitosClima" class="efeitos-clima" aria-hidden="true"></div>
 
   <nav>
     <div class="logo">M<span id="easterEggO" title="👀">o</span>tiva <span>Click</span></div>
@@ -21,7 +22,7 @@
     <h1>Precisa de uma <span>Frase Motivadora?</span></h1>
     <p class="subtitulo">Respire fundo, encontre seu ritmo e continue em frente.</p>
 
-    <section class="controls" aria-label="Personalização do dragão">
+    <section class="controls" aria-label="Personalização do animal">
       <label for="selectDragao">🐾 Escolha seu animal</label>
       <select id="selectDragao"></select>
       <label class="auto-label" for="autoTroca">
@@ -39,7 +40,20 @@
         <option value="outono">🍂 Outono</option>
         <option value="inverno">❄️ Inverno</option>
       </select>
-      <button id="fecharEstacoes" type="button">Fechar</button>
+      <button id="fecharEstacoes" class="botao-fechar-painel" type="button" aria-label="Fechar opções de estação">✕ Fechar</button>
+    </section>
+
+    <section id="painelHorarios" class="painel-estacoes painel-horarios" hidden aria-label="Prévia de cores por horário">
+      <p>🕰️ Modo de prévia: teste as cores de cada momento do dia</p>
+      <label for="selectHorario">Visualizar horário</label>
+      <select id="selectHorario">
+        <option value="manha">🌅 Manhã</option>
+        <option value="tarde">🌇 Tarde</option>
+        <option value="noite">🌙 Noite</option>
+        <option value="madrugada">🌌 Madrugada</option>
+      </select>
+      <button id="horarioAutomatico" type="button">Voltar ao horário automático</button>
+      <button id="fecharHorarios" class="botao-fechar-painel" type="button" aria-label="Fechar opções de horário">✕ Fechar</button>
     </section>
 
     <button id="botaoMotivar" type="button">Me motiva!</button>
@@ -49,9 +63,29 @@
     </div>
 
     <p class="nota-tema" id="notaTema">O cenário muda conforme o horário e a estação do ano.</p>
+
+    <section class="music-player" aria-label="Player de músicas do Spotify">
+      <div class="music-heading">
+        <span class="music-icon">♫</span>
+        <div><h2>Trilha sonora</h2><p>Escolha uma música para acompanhar seu momento.</p></div>
+      </div>
+      <label for="selectMusica">Música</label>
+      <select id="selectMusica">
+        <option value="0">Música 1</option><option value="1">Música 2</option>
+        <option value="2">Música 3</option><option value="3">Música 4</option>
+        <option value="4">Música 5</option><option value="5">Música 6</option>
+      </select>
+      <div class="music-buttons">
+        <button id="musicaAnterior" type="button" aria-label="Música anterior">⏮ Anterior</button>
+        <button id="proximaMusica" type="button" aria-label="Próxima música">Próxima ⏭</button>
+      </div>
+      <iframe id="spotifyPlayer" title="Player do Spotify" src="https://open.spotify.com/embed/track/5ocaSy7KaqSUyMshAGtDoQ?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <p class="music-help">Use a barra do próprio Spotify para avançar ou voltar na música. O player incorporado não permite que o site controle o salto exato de 10 segundos.</p>
+      <a id="abrirSpotify" class="spotify-link" href="https://open.spotify.com/track/5ocaSy7KaqSUyMshAGtDoQ" target="_blank" rel="noopener noreferrer">Abrir no Spotify ↗</a>
+    </section>
   </main>
 
-  <img id="dragao" src="https://media.tenor.com/ItloOf_4U-AAAAAi/toothless-dancing.gif" alt="Animal animado que muda conforme o horário e a estação">
+  <img id="dragao" src="animais/lobo.png" alt="Lobo Minecraft que muda conforme o horário e a estação">
 
   <script src="script.js"></script>
 </body>
